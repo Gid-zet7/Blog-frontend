@@ -6,7 +6,7 @@ const DashFooter = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const redirectToHome = () => navigate("/dash");
+  const redirectToHome = () => navigate("/dash/welcome");
 
   let redirectBtn = null;
   if (pathname !== "/dash") {
