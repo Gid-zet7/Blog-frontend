@@ -32,6 +32,34 @@ export const postsApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: "Post", id: "LIST" }];
       },
     }),
+    addNewPost: builder.mutation({
+      query: (initialPostData) => ({
+        url: "/posts",
+        method: "POST",
+        body: {
+          ...initialPostData,
+        },
+      }),
+      invalidatesTags: [{ type: "Post", id: "LIST" }],
+    }),
+    updatePost: builder.mutation({
+      query: (initialPostData) => ({
+        url: "/posts",
+        method: "PATCH",
+        body: {
+          ...initialPostData,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.id }],
+    }),
+    deletePost: builder.mutation({
+      query: ({ id }) => ({
+        url: "/posts",
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.id }],
+    }),
   }),
 });
 
@@ -40,7 +68,7 @@ export const { useGetPostsQuery } = postsApiSlice;
 export const selectPostsResult = postsApiSlice.endpoints.getPosts.select();
 
 // creates memoized selector
-const selectUsersData = createSelector(
+const selectPostsData = createSelector(
   selectPostsResult,
   (postsResult) => postsResult.data //   normalized state object with ids & entities
 );
@@ -51,4 +79,4 @@ export const {
   selectById: selectPostsById,
   selectIds: selectPostIds,
   //   Pass in a selector that returrns the users slice of state
-} = postsAdapter.getSelectors((state) => selectUsersData(state) ?? initialSate);
+} = postsAdapter.getSelectors((state) => selectPostsData(state) ?? initialSate);
