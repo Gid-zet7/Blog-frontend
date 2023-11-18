@@ -30,6 +30,9 @@ const Post = ({ postId }) => {
         <p>#{post.category} </p>
         <p>Date: {created} </p>
         {/* <p>{updated} </p> */}
+        <button onClick={handleEdit}>
+          <FontAwesomeIcon icon={faPenToSquare} />
+        </button>
       </div>
     );
   } else return null;
