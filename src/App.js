@@ -6,6 +6,8 @@ import DashLayout from "./components/DashLayout";
 import Welcome from "./components/features/auth/Welcome";
 import PostsList from "./components/features/posts/PostsList";
 import UsersList from "./components/features/users/UsersList";
+import NewPost from "./components/features/posts/NewPost";
+import NewUserForm from "./components/features/users/NewUserForm";
 
 function App() {
   return (
@@ -20,12 +22,14 @@ function App() {
 
           <Route path="posts">
             <Route index element={<PostsList />} />
+            <Route path="new" element={<NewPost />} />
           </Route>
 
           <Route path="users">
             <Route index element={<UsersList />} />
+            <Route path="new" element={<NewUserForm />} />
           </Route>
-        </Route>{" "}
+        </Route>
         {/* End of dash route */}
       </Route>
     </Routes>
