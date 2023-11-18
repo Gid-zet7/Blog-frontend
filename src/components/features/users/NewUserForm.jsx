@@ -14,15 +14,10 @@ const NewUserForm = () => {
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
-
   const [firstname, setFirstname] = useState("");
-
   const [lastname, setLastname] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [roles, setRoles] = useState(["User"]);
-
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
 
