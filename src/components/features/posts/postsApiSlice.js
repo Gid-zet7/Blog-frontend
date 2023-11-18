@@ -63,7 +63,12 @@ export const postsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetPostsQuery } = postsApiSlice;
+export const {
+  useGetPostsQuery,
+  useAddNewPostMutation,
+  useUpdatePostMutation,
+  useDeletePostMutation,
+} = postsApiSlice;
 
 export const selectPostsResult = postsApiSlice.endpoints.getPosts.select();
 
