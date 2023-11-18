@@ -20,13 +20,14 @@ const Post = ({ postId }) => {
       year: "numeric",
     });
 
-    const handleEdit = () => navigate(`/home/posts/${postId}`);
+    const handleEdit = () => navigate(`/dash/posts/${postId}`);
 
     return (
       <div>
         <h1>Title: {post.title} </h1>
-        <p>{post.content} </p>
-        <p>{post.category} </p>
+        <img src={post.image.url} alt="something" />
+        <p>{post.body} </p>
+        <p>#{post.category} </p>
         <p>Date: {created} </p>
         {/* <p>{updated} </p> */}
       </div>
