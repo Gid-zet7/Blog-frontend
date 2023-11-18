@@ -15,7 +15,7 @@ const NewPostForm = ({ users }) => {
   const [author, setAuthor] = useState("Unknown");
   const [body, setBody] = useState("speak your mind here");
   const [displayImage, setDisplayImage] = useState(
-    "https://images.unsplash.com/random"
+    "https://source.unsplash.com/nDDVQzkc_fc"
   );
   const [displayImageOwner, setDisplayImageOwner] = useState("Daniela Beleva");
   const [displayImageSource, setDisplayImageSource] = useState("Unsplash");
