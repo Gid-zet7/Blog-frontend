@@ -1,0 +1,224 @@
+import { useState, useEffect } from "react";
+import { useUpdatePostMutation, useDeletePostMutation } from "./postsApiSlice";
+import { useNavigate } from "react-router-dom";
+import PostPreview from "./PostPreview";
+
+const EditPostForm = ({ post, users }) => {
+  const [updatePost, { isLoading, isSuccess, isError, error }] =
+    useUpdatePostMutation();
+
+  const [
+    deletePost,
+    { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
+  ] = useDeletePostMutation();
+
+  const navigate = useNavigate();
+
+  const [userId, setUserId] = useState(users);
+  const [title, setTitle] = useState(post.title);
+  const [author, setAuthor] = useState(post.author);
+  const [body, setBody] = useState(post.body);
+  const [displayImage, setDisplayImage] = useState(post.image.url);
+  const [displayImageOwner, setDisplayImageOwner] = useState(post.image.owner);
+  const [displayImageSource, setDisplayImageSource] = useState(
+    post.image.source
+  );
+  const [category, setCategory] = useState(post.image.category);
+  const [preview, setPreview] = useState(false);
+
+  useEffect(() => {
+    if (isSuccess || isDelSuccess) {
+      setUserId("");
+      setTitle("");
+      setAuthor("");
+      setBody("");
+      setDisplayImage("");
+      setDisplayImageOwner("");
+      setDisplayImageSource("");
+      setCategory("");
+      navigate("/dash/posts");
+    }
+  }, [isSuccess, isDelSuccess, navigate]);
+
+  const onUserIdChanged = (e) => setUserId(e.target.value);
+  const onTitleChanged = (e) => setTitle(e.target.value);
+  const onAuthorChanged = (e) => setAuthor(e.target.value);
+  const onBodyChanged = (e) => setBody(e.target.value);
+  const onDisplayImageChanged = (e) => setDisplayImage(e.target.value);
+  const onDisplayImageOwnerChanged = (e) =>
+    setDisplayImageOwner(e.target.value);
+  const onDisplayImageSourceChanged = (e) =>
+    setDisplayImageSource(e.target.value);
+  const onCategoryChanged = (e) => setCategory(e.target.value);
+  const onPreviewChanged = () => {
+    setPreview((prevState) => !prevState);
+  };
+
+  const options = users.map((user) => {
+    return (
+      <option key={user.id} value={user.username}>
+        {user.username}
+      </option>
+    );
+  });
+
+  const canSave =
+    [
+      post.id,
+      title,
+      author,
+      body,
+      displayImage,
+      displayImageOwner,
+      displayImageSource,
+      category,
+    ].every(Boolean) && !isLoading;
+
+  const image = {
+    url: displayImage,
+    owner: displayImageOwner,
+    source: displayImageSource,
+  };
+
+  const onSavePostClicked = async (e) => {
+    e.preventDefault();
+
+    await updatePost({
+      id: post.id,
+      title,
+      author,
+      image,
+      body,
+      category,
+    });
+  };
+
+  const content = (
+    <>
+      <section id="new_forms">
+        <h2>New Bill</h2>
+        {/* <p className={errClass}>{error?.data?.message}</p> */}
+
+        <form className="form" onSubmit={onSavePostClicked}>
+          <label className="form__label" htmlFor="title">
+            Title:
+          </label>
+          <input
+            className={"form__input form__input--text"}
+            id="title"
+            name="title"
+            type="text"
+            value={title}
+            onChange={onTitleChanged}
+          />
+
+          <label className="form__label" htmlFor="author">
+            Author:
+          </label>
+          <select
+            className={`form__input`}
+            id="author"
+            name="author"
+            value={author}
+            onChange={onAuthorChanged}
+          >
+            {options}
+          </select>
+
+          <label className="form__label" htmlFor="display-image.url">
+            Display Image Url:
+          </label>
+          <input
+            id="dispaly-image"
+            name="dispaly-image.url"
+            className="form__input"
+            type="text"
+            value={displayImage}
+            onChange={onDisplayImageChanged}
+          ></input>
+
+          <label htmlFor="dispaly-image.owner">Display Image Owner:</label>
+          <input
+            className={`form__input`}
+            id="owner"
+            name="dispaly-image.owner"
+            type="text"
+            value={displayImageOwner}
+            onChange={onDisplayImageOwnerChanged}
+          />
+
+          <label htmlFor="dispaly-image.source">Display Image Source:</label>
+          <input
+            className={`form__input`}
+            id="source"
+            name="dispaly-image.source"
+            type="text"
+            value={displayImageSource}
+            onChange={onDisplayImageSourceChanged}
+          />
+
+          <label htmlFor="body">Body:</label>
+          <textarea
+            className={`form__input`}
+            id="body"
+            name="body"
+            type="text"
+            value={body}
+            onChange={onBodyChanged}
+          />
+
+          <label className="form__label" htmlFor="category">
+            Category:
+          </label>
+          <input
+            className={"form__input form__input--text"}
+            id="category"
+            type="text"
+            name="category"
+            value={category}
+            onChange={onCategoryChanged}
+          />
+
+          <div className="button_div">
+            <button
+              id="form__action-buttons"
+              className="icon-button"
+              title="Save"
+              //   disabled={!canSave}
+            >
+              Save
+            </button>
+          </div>
+        </form>
+        <div className="button_div">
+          <button
+            id="preview-button"
+            className="icon-button"
+            title="Save"
+            value={preview}
+            onClick={onPreviewChanged}
+          >
+            Preview
+          </button>
+        </div>
+      </section>
+      {preview && (
+        <section className="preview">
+          <PostPreview
+            title={title}
+            author={author}
+            url={displayImage}
+            owner={displayImageOwner}
+            source={displayImageSource}
+            body={body}
+            category={category}
+          />
+        </section>
+      )}
+    </>
+  );
+
+  return content;
+};
+
+export default EditPostForm;
