@@ -10,6 +10,7 @@ import NewPost from "./components/features/posts/NewPost";
 import NewUserForm from "./components/features/users/NewUserForm";
 import EditUser from "./components/features/users/EditUser";
 import EditPost from "./components/features/posts/EditPost";
+import Prefetch from "./components/features/auth/Prefetch";
 
 function App() {
   return (
@@ -18,23 +19,26 @@ function App() {
         {/* Public routes */}
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
-        {/* Protected Routes */}
-        <Route path="dash" element={<DashLayout />}>
-          <Route index path="welcome" element={<Welcome />} />
 
-          <Route path="posts">
-            <Route index element={<PostsList />} />
-            <Route path="new" element={<NewPost />} />
-            <Route path=":id" element={<EditPost />} />
-          </Route>
+        <Route element={<Prefetch />}>
+          {/* Protected Routes */}
+          <Route path="dash" element={<DashLayout />}>
+            <Route index path="welcome" element={<Welcome />} />
 
-          <Route path="users">
-            <Route index element={<UsersList />} />
-            <Route path="new" element={<NewUserForm />} />
-            <Route path=":id" element={<EditUser />} />
+            <Route path="posts">
+              <Route index element={<PostsList />} />
+              <Route path="new" element={<NewPost />} />
+              <Route path=":id" element={<EditPost />} />
+            </Route>
+
+            <Route path="users">
+              <Route index element={<UsersList />} />
+              <Route path="new" element={<NewUserForm />} />
+              <Route path=":id" element={<EditUser />} />
+            </Route>
           </Route>
+          {/* End of dash route */}
         </Route>
-        {/* End of dash route */}
       </Route>
     </Routes>
   );
