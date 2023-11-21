@@ -6,6 +6,8 @@ import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 import { PulseLoader } from "react-spinners";
 
+import usePersist from "../../../hooks/usePersist";
+
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
@@ -17,6 +19,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const [login, { isLoading }] = useLoginMutation();
+
+  const [persist, setPersist] = usePersist();
 
   useEffect(() => {
     userRef.current.focus();
@@ -50,6 +54,7 @@ const Login = () => {
 
   const handleUserInput = (e) => setUsername(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
+  const handleToggle = () => setPersist((prev) => !prev);
 
   const errClass = errMsg ? "errMsg" : "offscreen";
 
@@ -85,6 +90,11 @@ const Login = () => {
             required
           />
           <button>Sign In</button>
+
+          <label htmlFor="persist">
+            <input type="checkbox" checked={persist} onChange={handleToggle} />
+            Trust this Device
+          </label>
         </form>
         <div>
           <Link to="/">Back to Home</Link>
