@@ -14,7 +14,6 @@ const EditPostForm = ({ post, users }) => {
 
   const navigate = useNavigate();
 
-  const [userId, setUserId] = useState(users);
   const [title, setTitle] = useState(post.title);
   const [author, setAuthor] = useState(post.author);
   const [body, setBody] = useState(post.body);
@@ -28,7 +27,6 @@ const EditPostForm = ({ post, users }) => {
 
   useEffect(() => {
     if (isSuccess || isDelSuccess) {
-      setUserId("");
       setTitle("");
       setAuthor("");
       setBody("");
@@ -40,7 +38,6 @@ const EditPostForm = ({ post, users }) => {
     }
   }, [isSuccess, isDelSuccess, navigate]);
 
-  const onUserIdChanged = (e) => setUserId(e.target.value);
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onAuthorChanged = (e) => setAuthor(e.target.value);
   const onBodyChanged = (e) => setBody(e.target.value);
@@ -50,6 +47,9 @@ const EditPostForm = ({ post, users }) => {
   const onDisplayImageSourceChanged = (e) =>
     setDisplayImageSource(e.target.value);
   const onCategoryChanged = (e) => setCategory(e.target.value);
+  const onDeletePostClicked = async () => {
+    await deletePost({ id: post.id });
+  };
   const onPreviewChanged = () => {
     setPreview((prevState) => !prevState);
   };
@@ -96,7 +96,7 @@ const EditPostForm = ({ post, users }) => {
   const content = (
     <>
       <section id="new_forms">
-        <h2>New Bill</h2>
+        <h2>New Post</h2>
         {/* <p className={errClass}>{error?.data?.message}</p> */}
 
         <form className="form" onSubmit={onSavePostClicked}>
@@ -190,6 +190,15 @@ const EditPostForm = ({ post, users }) => {
             </button>
           </div>
         </form>
+        <div>
+          <h2>Delete Post</h2>
+          <div>
+            <button type="button" title="Delete" onClick={onDeletePostClicked}>
+              Delete
+            </button>
+          </div>
+        </div>
+
         <div className="button_div">
           <button
             id="preview-button"
