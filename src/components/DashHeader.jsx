@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useSendLogoutMutation } from "./features/auth/authApiSlice";
+import useAuth from "../hooks/useAuth";
 import { PulseLoader } from "react-spinners";
 
 const DASH_REGEX = /^dash(\/)?$/;
@@ -10,6 +11,8 @@ const POSTS_REGEX = /^dash\/posts(\/)?$/;
 const USERS_REGEX = /^dash\/users(\/)?$/;
 
 const DashHeader = () => {
+  const { isAdmin, isAuthor } = useAuth();
+
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -20,11 +23,12 @@ const DashHeader = () => {
     if (isSuccess) navigate("/");
   }, [isSuccess, navigate]);
 
+  const onNewPostClicked = () => navigate("/dash/posts/new");
+  const onNewUserClicked = () => navigate("/dash/users/new");
+  const onPostsClicked = () => navigate("/dash/posts");
+  const onUsersClicked = () => navigate("/dash/users");
+
   const onLogoutClicked = () => sendLogout();
-
-  if (isLoading) return <PulseLoader color="#BADA55" />;
-
-  if (isError) return <p>Error: {error.data?.message}</p>;
 
   let dashClass = null;
   if (
@@ -41,16 +45,76 @@ const DashHeader = () => {
     </button>
   );
 
+  let newPostButton = null;
+  if (isAdmin || isAuthor) {
+    if (!POSTS_REGEX.test(pathname)) {
+      newPostButton = (
+        <button title="new Post" onClick={onNewPostClicked}>
+          New Post
+        </button>
+      );
+    }
+  }
+
+  let postsButton = null;
+  if (!POSTS_REGEX.test(pathname) && pathname.includes("/dash")) {
+    postsButton = (
+      <button title="Bills" onClick={onPostsClicked}>
+        Posts
+      </button>
+    );
+  }
+
+  let newUserButton = null;
+  if (isAdmin) {
+    if (!USERS_REGEX.test(pathname)) {
+      newUserButton = (
+        <button title="New User" onClick={onNewUserClicked}>
+          New User
+        </button>
+      );
+    }
+  }
+
+  let userButton = null;
+  if (isAdmin) {
+    if (!USERS_REGEX.test(pathname) && pathname.includes("/dash")) {
+      userButton = (
+        <button title="Users" onClick={onUsersClicked}>
+          Users
+        </button>
+      );
+    }
+  }
+
+  let buttonContent;
+  if (isLoading) {
+    buttonContent = <PulseLoader color={"#BADA55"} />;
+  } else {
+    buttonContent = (
+      <>
+        {/* {homeButton} */}
+        {newPostButton}
+        {newUserButton}
+        {postsButton}
+        {userButton}
+        {logoutButton}
+      </>
+    );
+  }
+
+  const errClass = isError ? "errmsg" : "offscreen";
+
   const content = (
     <>
-      {/* <p className={errClass}>{error?.data?.message} </p> */}
+      <p className={errClass}>{error?.data?.message} </p>
 
       <header className="dash_header">
         <div className={`dash-header__container ${dashClass}`}>
           <Link to="/dash/posts">
             <h1 className="dash-header__title">Blog Posts</h1>
           </Link>
-          <nav className="dash-header__nav">{logoutButton}</nav>
+          <nav className="dash-header__nav">{buttonContent}</nav>
         </div>
       </header>
     </>
