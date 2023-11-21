@@ -1,6 +1,5 @@
 import { useGetUsersQuery } from "../users/usersApiSlice";
 import NewPostForm from "./NewPostForm";
-import { PulseLoader } from "react-spinners";
 
 const NewPost = () => {
   const { users } = useGetUsersQuery("usersList", {
@@ -9,7 +8,7 @@ const NewPost = () => {
     }),
   });
 
-  if (!users?.length) return <PulseLoader color={"#BADA55"} />;
+  if (!users?.length) return <p>Not currently available</p>;
 
   const content = <NewPostForm users={users} />;
 
