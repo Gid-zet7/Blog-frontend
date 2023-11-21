@@ -1,8 +1,11 @@
 import { useGetPostsQuery } from "./postsApiSlice";
 import Post from "./Post";
 import { PulseLoader } from "react-spinners";
+import useAuth from "../../../hooks/useAuth";
 
 const PostsList = () => {
+  const { Username, isAdmin } = useAuth();
+
   const {
     data: posts,
     isLoading,
@@ -24,13 +27,21 @@ const PostsList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = posts;
+    const { ids, entities } = posts;
 
-    console.log(ids);
+    let filteredIds;
+    if (isAdmin) {
+      filteredIds = [...ids];
+      // console.log(filteredIds)
+    } else {
+      filteredIds = ids.filter(
+        (postId) => entities[postId].username === Username
+      );
+    }
 
-    const postContent = ids?.length
-      ? ids.map((postId) => <Post key={postId} postId={postId} />)
-      : null;
+    const postContent =
+      ids?.length &&
+      filteredIds.map((postId) => <Post key={postId} postId={postId} />);
 
     content = <div> {postContent} </div>;
 
