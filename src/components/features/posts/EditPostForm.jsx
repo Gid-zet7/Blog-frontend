@@ -15,14 +15,14 @@ const EditPostForm = ({ post, users }) => {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(post.title);
-  const [author, setAuthor] = useState(post.author);
+  const [author, setAuthor] = useState(post.username);
   const [body, setBody] = useState(post.body);
   const [displayImage, setDisplayImage] = useState(post.image.url);
   const [displayImageOwner, setDisplayImageOwner] = useState(post.image.owner);
   const [displayImageSource, setDisplayImageSource] = useState(
     post.image.source
   );
-  const [category, setCategory] = useState(post.image.category);
+  const [category, setCategory] = useState(post.category);
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
@@ -62,17 +62,11 @@ const EditPostForm = ({ post, users }) => {
     );
   });
 
-  const canSave =
-    [
-      post.id,
-      title,
-      author,
-      body,
-      displayImage,
-      displayImageOwner,
-      displayImageSource,
-      category,
-    ].every(Boolean) && !isLoading;
+  const errClass = isError || isDelError ? "errmsg" : "offscreen";
+
+  const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
+
+  const canSave = [title, author, body, category].every(Boolean) && !isLoading;
 
   const image = {
     url: displayImage,
@@ -97,7 +91,7 @@ const EditPostForm = ({ post, users }) => {
     <>
       <section id="new_forms">
         <h2>New Post</h2>
-        {/* <p className={errClass}>{error?.data?.message}</p> */}
+        <p className={errClass}>{errContent}</p>
 
         <form className="form" onSubmit={onSavePostClicked}>
           <label className="form__label" htmlFor="title">
@@ -184,7 +178,7 @@ const EditPostForm = ({ post, users }) => {
               id="form__action-buttons"
               className="icon-button"
               title="Save"
-              //   disabled={!canSave}
+              disabled={!canSave}
             >
               Save
             </button>
