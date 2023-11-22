@@ -23,11 +23,11 @@ const User = ({ userId }) => {
 
     return (
       <tr>
-        <td className={`table__cell`}>
-          <Link to={`/home/users/${user.id}`}>{user.username} </Link>
+        <td className={`table__cell ${cellStatus}`}>
+          <Link to={`/dash/users/${user.id}`}>{user.username} </Link>
         </td>
-        <td className={`table__cell`}>{userRolesString}</td>
-        <td className={`table__cell`}>
+        <td className={`table__cell ${cellStatus}`}>{userRolesString}</td>
+        <td className={`table__cell ${cellStatus}`}>
           <button className="btn" onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
