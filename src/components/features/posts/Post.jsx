@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
 import { useGetPostsQuery } from "./postsApiSlice";
 
@@ -25,6 +26,7 @@ const Post = ({ postId }) => {
     return (
       <div>
         <h1>Title: {post.title} </h1>
+        <p>Author: {post.username}</p>
         <img src={post.image.url} alt="something" />
         <p>{post.body} </p>
         <p>#{post.category} </p>
@@ -38,4 +40,6 @@ const Post = ({ postId }) => {
   } else return null;
 };
 
-export default Post;
+const memoizedPost = memo(Post);
+
+export default memoizedPost;
