@@ -3,9 +3,14 @@ import { useGetPostsQuery } from "./postsApiSlice";
 import { useGetUsersQuery } from "../users/usersApiSlice";
 import { PulseLoader } from "react-spinners";
 import EditPostForm from "./EditPostForm";
+import useAuth from "../../../hooks/useAuth";
 
 const EditPost = () => {
   const { id } = useParams();
+
+  const { Username, roles } = useAuth();
+
+  const isAdmin = roles.includes("Admin");
 
   const { post } = useGetPostsQuery("postssList", {
     selectFromResult: ({ data }) => ({
@@ -20,6 +25,13 @@ const EditPost = () => {
   });
 
   if (!post || !users?.length) return <PulseLoader color={"#BADA55"} />;
+
+  if (!isAdmin) {
+    console.log(post);
+    if (post.username !== Username) {
+      return <p>No access</p>;
+    }
+  }
 
   const content =
     post && users ? (
