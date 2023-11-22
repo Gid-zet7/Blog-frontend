@@ -74,7 +74,7 @@ const EditUserForm = ({ user }) => {
 
   const canSave = [roles.length, username].every(Boolean) && !isLoading;
 
-  const errClass = isError ? "errmsg" : "offscreen";
+  const errClass = isError || isDelError ? "errmsg" : "offscreen";
   const validUserClass = !validUsername ? "form__input--incomplete" : "";
   const validPwdClass = !validPassword ? "form__input--incomplete" : "";
   // const validRolesClass = !Boolean(roles.length) ? "form__input--incomplete" : ""
