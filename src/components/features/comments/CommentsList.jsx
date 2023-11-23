@@ -2,11 +2,8 @@ import { useGetCommentsQuery } from "./CommentsApiSlice";
 import Comment from "./Comment";
 import { PulseLoader } from "react-spinners";
 import { useEffect } from "react";
-// import useAuth from "../../../hooks/useAuth";
 
 const CommentsList = ({ postId }) => {
-  // const { Username, isAdmin } = useAuth();
-
   const {
     data: comments,
     isLoading,
@@ -32,17 +29,7 @@ const CommentsList = ({ postId }) => {
   }
 
   if (isSuccess) {
-    const { ids, entities } = comments;
-
-    // let filteredIds;
-    // // if (isAdmin) {
-    // //   filteredIds = [...ids];
-    // //   // console.log(filteredIds)
-    // // } else {
-    //   filteredIds = ids.filter(
-    //     (commentId) => entities[commentId].username === Username
-    //   );
-    // // }
+    const { ids } = comments;
 
     const commentContent = ids
       ? ids.map((commentId) => (
