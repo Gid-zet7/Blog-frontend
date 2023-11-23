@@ -15,6 +15,7 @@ import PersistLogin from "./components/features/auth/PersistLogin";
 import RequireAuth from "./components/features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import useTitle from "./hooks/useTitle";
+import Signup from "./components/features/auth/Signup";
 
 function App() {
   useTitle("Blog Post");
@@ -24,6 +25,7 @@ function App() {
         {/* Public routes */}
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
 
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
