@@ -10,9 +10,8 @@ const NewPostForm = ({ users }) => {
 
   const navigate = useNavigate();
 
-  const [userId, setUserId] = useState(users);
   const [title, setTitle] = useState("Set Title");
-  const [author, setAuthor] = useState("Unknown");
+  const [author, setAuthor] = useState("");
   const [body, setBody] = useState("speak your mind here");
   const [displayImage, setDisplayImage] = useState(
     "https://source.unsplash.com/nDDVQzkc_fc"
@@ -24,7 +23,6 @@ const NewPostForm = ({ users }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      setUserId("");
       setTitle("");
       setAuthor("");
       setBody("");
@@ -36,7 +34,6 @@ const NewPostForm = ({ users }) => {
     }
   }, [isSuccess, navigate]);
 
-  const onUserIdChanged = (e) => setUserId(e.target.value);
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onAuthorChanged = (e) => setAuthor(e.target.value);
   const onBodyChanged = (e) => setBody(e.target.value);
@@ -50,17 +47,7 @@ const NewPostForm = ({ users }) => {
     setPreview((prevState) => !prevState);
   };
 
-  const canSave =
-    [
-      userId,
-      title,
-      author,
-      body,
-      displayImage,
-      displayImageOwner,
-      displayImageSource,
-      category,
-    ].every(Boolean) && !isLoading;
+  const canSave = [title, author, body, category].every(Boolean) && !isLoading;
 
   const image = {
     url: displayImage,
@@ -89,15 +76,18 @@ const NewPostForm = ({ users }) => {
     );
   });
 
-  //   const errClass = isError ? "errmsg" : "offscreen";
+  const errClass = isError ? "errmsg" : "offscreen";
+
+  const errContent = error?.data?.message ?? "";
+
   //   const validBillClass = !bill ? "form__input--incomplete" : "";
   // const validBalanceClass = !balance ? "form__input--incomplete" : ''
 
   const content = (
     <>
       <section id="new_forms">
-        <h2>New Bill</h2>
-        {/* <p className={errClass}>{error?.data?.message}</p> */}
+        <h2>New Post</h2>
+        <p className={errClass}>{errContent}</p>
 
         <form className="form" onSubmit={onSavePostClicked}>
           <label className="form__label" htmlFor="title">
@@ -122,6 +112,7 @@ const NewPostForm = ({ users }) => {
             value={author}
             onChange={onAuthorChanged}
           >
+            <option>--Please select--</option>
             {options}
           </select>
 
@@ -184,7 +175,7 @@ const NewPostForm = ({ users }) => {
               id="form__action-buttons"
               className="icon-button"
               title="Save"
-              //   disabled={!canSave}
+              disabled={!canSave}
             >
               Save
             </button>
