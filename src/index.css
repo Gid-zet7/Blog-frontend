@@ -11,3 +11,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
+
+ol,
+ul {
+  list-style: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  gap: 1rem;
+  
+}
+
+input {
+  padding: .5rem;
+}
+
+#auth_header {
+  align-self: center;
+}
+
+#auth__btn {
+  align-self: center;
+  padding: .5rem 1rem;
+  background-color: #000;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+}
+
+#persist {
+  align-self: center;
+}
+
+.auth__container {
+  align-self: center;
+}
+
+.home-link__container {
+  align-self: center;
+}
+
+
