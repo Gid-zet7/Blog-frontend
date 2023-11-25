@@ -74,13 +74,13 @@ const Signup = () => {
   const content = (
     <section id="signup__form">
       <div>
-        <h1>Sign up</h1>
-      </div>
-      <div>
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p>
         <form id="auth_form" onSubmit={handleSubmit}>
+          <div id="auth_header">
+            <h1>Sign up</h1>
+          </div>
           <label htmlFor="username">Username:</label>
           <input
             id="username"
@@ -138,11 +138,17 @@ const Signup = () => {
             required
           />
 
-          <button>Sign In</button>
+          <button id="auth__btn">Sign In</button>
+
+          <div className="auth__container">
+            Already have an account?
+            <Link to="/login"> Login</Link>
+          </div>
+
+          <div className="home-link__container">
+            <Link to="/">Back to Home</Link>
+          </div>
         </form>
-        <div>
-          <Link to="/">Back to Home</Link>
-        </div>
       </div>
     </section>
   );
