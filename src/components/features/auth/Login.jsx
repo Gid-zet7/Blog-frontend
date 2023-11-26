@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 import { PulseLoader } from "react-spinners";
-
 import usePersist from "../../../hooks/usePersist";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const userRef = useRef();
@@ -62,14 +62,14 @@ const Login = () => {
 
   const content = (
     <section id="login">
-      <div id="auth_header">
-        <h1>Login</h1>
-      </div>
       <div>
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p>
         <form id="login_form" onSubmit={handleSubmit}>
+          <div id="auth_header">
+            <h1>Login</h1>
+          </div>
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -89,16 +89,30 @@ const Login = () => {
             onChange={handlePasswordInput}
             required
           />
-          <button>Sign In</button>
 
-          <label htmlFor="persist">
-            <input type="checkbox" checked={persist} onChange={handleToggle} />
+          <button id="auth__btn">
+            Log In <FontAwesomeIcon icon={faSignIn} color="#fff" />
+          </button>
+
+          <label id="persist" htmlFor="persist">
+            <input
+              name="persist"
+              type="checkbox"
+              checked={persist}
+              onChange={handleToggle}
+            />
             Trust this Device
           </label>
+
+          <div className="auth__container">
+            Don't have an account yet?
+            <Link to="/signup"> sign up</Link>
+          </div>
+
+          <div className="home-link__container">
+            <Link to="/">Back to Home</Link>
+          </div>
         </form>
-        <div>
-          <Link to="/">Back to Home</Link>
-        </div>
       </div>
     </section>
   );
