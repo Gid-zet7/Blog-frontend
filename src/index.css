@@ -61,4 +61,101 @@ input {
   align-self: center;
 }
 
+.Public {
+  position: relative;
+  min-height: 100vh;
+} 
+
+.Public:last-child {
+  padding-bottom: 10rem;
+}
+
+.auth {
+  position: relative;
+  min-height: 100vh;
+}
+
+.auth:last-child {
+  padding-bottom: 10rem;
+}
+
+.dash-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.dash-container:last-child {
+  padding-bottom: 10rem;
+}
+
+
+.dash_header{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  z-index: 1;
+  width: 100vw;
+  background-color: #fff;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  height: 100px;
+        
+}
+
+.dash-header__container {
+  display: flex;
+  gap: 8rem;
+}
+
+.user-icon {
+  position: relative;
+}
+
+.dash-header__nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  gap: 2rem;
+  left: -2.5rem;
+  top: 2rem;
+  width: 100px;
+  display: none;
+  padding: .5rem;
+  background-color: #d6d5d5;
+}
+
+.logout {
+  display: flex;
+  gap: .5rem;
+}
+
+.dash-header__nav > button {
+  width: 80%;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.user-icon:hover .dash-header__nav,
+.user-icon:focus-within .dash-header__nav {
+  display: block;
+}
+
+
+/* Footer */
+footer {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 100vw;
+  padding: 2rem 2.5rem;
+  background-color: #000;
+}
+  
+    
+
 
