@@ -10,6 +10,7 @@ import NewPost from "./components/features/posts/NewPost";
 import NewUserForm from "./components/features/users/NewUserForm";
 import EditUser from "./components/features/users/EditUser";
 import EditPost from "./components/features/posts/EditPost";
+import ViewPost from "./components/features/posts/ViewPost";
 import Prefetch from "./components/features/auth/Prefetch";
 import PersistLogin from "./components/features/auth/PersistLogin";
 import RequireAuth from "./components/features/auth/RequireAuth";
@@ -40,6 +41,7 @@ function App() {
                   <Route index element={<PostsList />} />
                   <Route path="new" element={<NewPost />} />
                   <Route path=":id" element={<EditPost />} />
+                  <Route path="view/:id" element={<ViewPost />} />
                 </Route>
                 <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                   <Route path="users">
