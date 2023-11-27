@@ -12,7 +12,7 @@ const EditPost = () => {
 
   const isAdmin = roles.includes("Admin");
 
-  const { post } = useGetPostsQuery("postssList", {
+  const { post } = useGetPostsQuery("postsList", {
     selectFromResult: ({ data }) => ({
       post: data?.entities[id],
     }),
@@ -24,7 +24,7 @@ const EditPost = () => {
     }),
   });
 
-  if (!post || !users?.length) return <PulseLoader color={"#BADA55"} />;
+  if (!post || !users?.length) return <PulseLoader color={"#000"} />;
 
   if (!isAdmin) {
     console.log(post);
@@ -37,7 +37,7 @@ const EditPost = () => {
     post && users ? (
       <EditPostForm post={post} users={users} />
     ) : (
-      <PulseLoader color={"#BADA55"} />
+      <PulseLoader color={"#000"} />
     );
 
   return content;
