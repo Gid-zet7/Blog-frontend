@@ -44,11 +44,21 @@ const Comment = ({ commentId, postId }) => {
       content = (
         <>
           <p className={errClass}>{errContent}</p>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              padding: "1rem",
+            }}
+          >
             <p>Author: {comment.username}</p>
             <p>{comment.content} </p>
             <p>Date: {created} </p>
-            <button onClick={onDeleteCommentClicked}>
+            <button
+              onClick={onDeleteCommentClicked}
+              style={{ alignSelf: "center" }}
+            >
               <FontAwesomeIcon icon={faTrash} />
             </button>
           </div>
