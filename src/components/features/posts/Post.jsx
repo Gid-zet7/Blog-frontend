@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCalendar,
+  faPenToSquare,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { memo, useState } from "react";
 
@@ -16,8 +20,33 @@ const Post = ({ postId, commentId }) => {
     }),
   });
 
+  const container = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    padding: "1rem",
+    alignItems: "center",
+    fontSize: ".8rem",
+  };
+
   const navigate = useNavigate();
   const [viewComment, setViewComment] = useState(false);
+
+  const handleEdit = () => navigate(`/dash/posts/${postId}`);
+  const handleCommentView = () => {
+    setViewComment((prevState) => !prevState);
+  };
+
+  const viewPost = () => navigate(`/dash/posts/view/${postId}`);
+
+  let editButton;
+  if (post.username === Username) {
+    editButton = (
+      <button onClick={handleEdit}>
+        <FontAwesomeIcon icon={faPenToSquare} />
+      </button>
+    );
+  }
 
   if (post) {
     const created = new Date(post.createdAt).toLocaleString("en-US", {
@@ -26,30 +55,48 @@ const Post = ({ postId, commentId }) => {
       year: "numeric",
     });
 
-    const handleEdit = () => navigate(`/dash/posts/${postId}`);
-    const handleCommentView = () => {
-      setViewComment((prevState) => !prevState);
-    };
+    const truncBody = post.body.substr(0, 200) + "...";
 
     return (
       <>
-        <div>
-          <h1>Title: {post.title} </h1>
-          <p>Author: {post.username}</p>
-          <img src={post.image.url} alt="something" />
-          <p>{post.body} </p>
+        <div style={container} onClick={viewPost}>
+          <div style={{ padding: "1rem" }}>
+            <h1>Title: {post.title} </h1>
+          </div>
+          <img
+            src={post.image.url}
+            alt="something"
+            style={{ width: "90%", height: "100%" }}
+          />
+          <div style={{ padding: "1rem" }}>
+            <p>{truncBody} </p>
+          </div>
+          <p>
+            <FontAwesomeIcon icon={faUser} /> {post.username}
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faCalendar} /> {created}
+          </p>
           <p>#{post.category} </p>
-          <p>Date: {created} </p>
-          <button onClick={handleEdit}>
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </button>
+          {editButton}
         </div>
-        <button onClick={handleCommentView}>View Comments</button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button onClick={handleCommentView}>View Comments</button>
+        </div>
+
         {viewComment && (
           <>
-            <h1>Comments</h1>
-            <NewCommentForm postId={postId} username={Username} />
-            <CommentsList postId={post.id} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <h1>Comments</h1>
+              <NewCommentForm postId={postId} username={Username} />
+              <CommentsList postId={post.id} />
+            </div>
           </>
         )}
       </>
