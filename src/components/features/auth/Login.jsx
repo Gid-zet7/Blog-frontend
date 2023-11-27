@@ -61,7 +61,7 @@ const Login = () => {
   if (isLoading) return <PulseLoader color={"#BADA55"} />;
 
   const content = (
-    <section id="login">
+    <section id="login" className="auth">
       <div>
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
@@ -114,6 +114,19 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <footer>
+        <div className="about-footer">
+          <h4>About Bincika</h4>
+          <h6>About us</h6>
+          <h6>Our mission</h6>
+        </div>
+        <div className="contact-footer">
+          <h4>Contact us</h4>
+          <h6>Advertise</h6>
+          <h6>Whatsapp</h6>
+          <h6>Email</h6>
+        </div>
+      </footer>
     </section>
   );
 

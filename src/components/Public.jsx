@@ -115,6 +115,19 @@ const Public = () => {
         <section>
           <PublicPostsList />
         </section>
+        <footer>
+          <div className="about-footer">
+            <h4>About Bincika</h4>
+            <h6>About us</h6>
+            <h6>Our mission</h6>
+          </div>
+          <div className="contact-footer">
+            <h4>Contact us</h4>
+            <h6>Advertise</h6>
+            <h6>Whatsapp</h6>
+            <h6>Email</h6>
+          </div>
+        </footer>
       </div>
     </>
   );
