@@ -1,7 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useSendLogoutMutation } from "./features/auth/authApiSlice";
 import useAuth from "../hooks/useAuth";
 import { PulseLoader } from "react-spinners";
@@ -41,6 +41,7 @@ const DashHeader = () => {
 
   const logoutButton = (
     <button className="logout" title="Logout" onClick={onLogoutClicked}>
+      LogOut
       <FontAwesomeIcon icon={faRightFromBracket} />
     </button>
   );
@@ -95,13 +96,22 @@ const DashHeader = () => {
       <>
         {/* {homeButton} */}
         {newPostButton}
+        <hr />
         {newUserButton}
+        <hr />
         {postsButton}
+        <hr />
         {userButton}
+        <hr />
         {logoutButton}
       </>
     );
   }
+
+  const linkStyles = {
+    textDecoration: "none",
+    color: "#000",
+  };
 
   const errClass = isError ? "errmsg" : "offscreen";
 
@@ -111,10 +121,13 @@ const DashHeader = () => {
 
       <header className="dash_header">
         <div className={`dash-header__container ${dashClass}`}>
-          <Link to="/dash/posts">
-            <h1 className="dash-header__title">Blog Posts</h1>
+          <Link to="/dash/posts" style={linkStyles}>
+            <h1 className="dash-header__title">Bincika</h1>
           </Link>
-          <nav className="dash-header__nav">{buttonContent}</nav>
+          <div className="user-icon">
+            <FontAwesomeIcon icon={faUser} />
+            <nav className="dash-header__nav">{buttonContent}</nav>
+          </div>
         </div>
       </header>
     </>
