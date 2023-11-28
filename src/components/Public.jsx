@@ -117,22 +117,25 @@ const Public = () => {
           </section>
           <section>
             <div className="section-wrap">
-              <h2>Want to be an author of this Blog?</h2>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed,
-                odit culpa. Laboriosam fugiat, voluptates animi distinctio
-                officiis sapiente dolores quis ex dolorum debitis. Corporis
-                veniam, impedit amet voluptatibus alias repellat consequuntur
-                ratione molestiae adipisci iste nobis numquam iure dolorum ex
-                libero aspernatur cupiditate tempore id magnam. Fugiat minus
-                repellat suscipit explicabo atque labore tenetur, dignissimos a?
-                Sed iusto tempore quae officia necessitatibus nobis velit minima
-                enim neque adipisci dolorem optio nulla tempora quis inventore
-                doloribus amet itaque culpa, dolor numquam reprehenderit
-                incidunt accusantium. Non amet eaque praesentium sequi quibusdam
-                vel ea quidem repellendus asperiores quis ut labore obcaecati,
-                repudiandae suscipit fuga, repellat veritatis dolor eligendi
-              </p>
+              <div style={{ lineHeight: 1.5, padding: "2rem" }}>
+                <h2>Want to be an author of this Blog?</h2>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed,
+                  odit culpa. Laboriosam fugiat, voluptates animi distinctio
+                  officiis sapiente dolores quis ex dolorum debitis. Corporis
+                  veniam, impedit amet voluptatibus alias repellat consequuntur
+                  ratione molestiae adipisci iste nobis numquam iure dolorum ex
+                  libero aspernatur cupiditate tempore id magnam. Fugiat minus
+                  repellat suscipit explicabo atque labore tenetur, dignissimos
+                  a? Sed iusto tempore quae officia necessitatibus nobis velit
+                  minima enim neque adipisci dolorem optio nulla tempora quis
+                  inventore doloribus amet itaque culpa, dolor numquam
+                  reprehenderit incidunt accusantium. Non amet eaque praesentium
+                  sequi quibusdam vel ea quidem repellendus asperiores quis ut
+                  labore obcaecati, repudiandae suscipit fuga, repellat
+                  veritatis dolor eligendi
+                </p>
+              </div>
             </div>
           </section>
         </div>
