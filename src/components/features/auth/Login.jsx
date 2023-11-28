@@ -61,7 +61,15 @@ const Login = () => {
   if (isLoading) return <PulseLoader color={"#BADA55"} />;
 
   const content = (
-    <section id="login" className="auth">
+    <section
+      id="login"
+      className="auth"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <div>
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
@@ -90,7 +98,7 @@ const Login = () => {
             required
           />
 
-          <button id="auth__btn">
+          <button id="auth__btn" className="btn">
             Log In <FontAwesomeIcon icon={faSignIn} color="#fff" />
           </button>
 
