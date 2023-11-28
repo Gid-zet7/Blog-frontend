@@ -6,13 +6,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { memo, useState } from "react";
-
 import { useGetPostsQuery } from "./postsApiSlice";
 import NewCommentForm from "../comments/NewCommentForm";
 import useAuth from "../../../hooks/useAuth";
 import CommentsList from "../comments/CommentsList";
 
-const Post = ({ postId, commentId }) => {
+const Post = ({ postId }) => {
   const { Username } = useAuth();
   const { post } = useGetPostsQuery("postsList", {
     selectFromResult: ({ data }) => ({
@@ -63,11 +62,22 @@ const Post = ({ postId, commentId }) => {
           <div style={{ padding: "1rem" }}>
             <h1>Title: {post.title} </h1>
           </div>
-          <img
-            src={post.image.url}
-            alt="something"
-            style={{ width: "90%", height: "100%" }}
-          />
+          <div className="image-container">
+            <img
+              src={post.image.url}
+              alt="something"
+              style={{ width: "90%", height: "100%" }}
+            />
+            <p>
+              <p style={{ fontSize: ".6rem" }}>
+                Photo by
+                <span style={{ color: "steelblue" }}> {post.image.owner} </span>
+                from
+                <span style={{ color: "steelblue" }}> {post.image.source}</span>
+              </p>
+            </p>
+          </div>
+
           <div style={{ padding: "1rem" }}>
             <p>{truncBody} </p>
           </div>
