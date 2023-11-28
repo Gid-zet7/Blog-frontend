@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useRefreshMutation } from "./authApiSlice";
 import usePersist from "../../../hooks/usePersist";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ const PersistLogin = () => {
   const [persist] = usePersist();
   //   pulling access token from the state
   const token = useSelector(selectCurrentToken);
-  const effectRan = useRef(false);
+  // const effectRan = useRef(false);
 
   const [trueSuccess, setTrueSuccess] = useState(false);
 
@@ -18,23 +18,24 @@ const PersistLogin = () => {
     useRefreshMutation();
 
   useEffect(() => {
-    if (effectRan.current === true || process.env.NODE_ENV !== "development") {
-      const verifyRefreshToken = async () => {
-        console.log("verifying refresh token");
-        try {
-          // const response =
-          await refresh();
-          // const { accessToken } = response.data
-          setTrueSuccess(true);
-        } catch (err) {
-          console.log(err);
-        }
-      };
+    // console.log(effectRan.current, process.env.NODE_ENV);
+    // if (effectRan.current === true || process.env.NODE_ENV !== "development") {
+    const verifyRefreshToken = async () => {
+      console.log("verifying refresh token");
+      try {
+        // const response =
+        await refresh();
+        // const { accessToken } = response.data
+        setTrueSuccess(true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-      if (!token && persist) verifyRefreshToken();
-    }
+    if (!token && persist) verifyRefreshToken();
+    // }
     // Clean up function sets effectRan to true
-    return () => (effectRan.current = true);
+    // return () => (effectRan.current = true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
