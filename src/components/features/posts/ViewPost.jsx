@@ -9,7 +9,7 @@ import NewCommentForm from "../comments/NewCommentForm";
 import useAuth from "../../../hooks/useAuth";
 import CommentsList from "../comments/CommentsList";
 
-const ViewPost = ({ postId }) => {
+const ViewPost = () => {
   const { id } = useParams();
   const { Username } = useAuth();
   const { post } = useGetPostsQuery("postsList", {
@@ -24,12 +24,13 @@ const ViewPost = ({ postId }) => {
     justifyContent: "center",
     padding: "1rem",
     alignItems: "center",
+    marginTop: "8rem",
   };
 
   const navigate = useNavigate();
   const [viewComment, setViewComment] = useState(false);
 
-  const handleEdit = () => navigate(`/dash/posts/${postId}`);
+  const handleEdit = () => navigate(`/dash/posts/${id}`);
   const handleCommentView = () => {
     setViewComment((prevState) => !prevState);
   };
@@ -68,7 +69,7 @@ const ViewPost = ({ postId }) => {
           {viewComment && (
             <>
               <h1>Comments</h1>
-              <NewCommentForm postId={postId} username={Username} />
+              <NewCommentForm postId={id} username={Username} />
               <CommentsList postId={post.id} />
             </>
           )}
