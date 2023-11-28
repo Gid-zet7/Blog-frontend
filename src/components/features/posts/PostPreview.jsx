@@ -18,23 +18,19 @@ const PostPreview = ({ title, author, url, owner, source, body, category }) => {
         <div style={{ padding: "1rem" }}>
           <h1>Title: {title} </h1>
         </div>
-        <div
-          className="image-container"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className="image-container">
           <img
             src={url}
-            alt="display"
+            alt="something"
             style={{ width: "90%", height: "100%" }}
           />
-          <p style={{ fontSize: ".6rem" }}>
-            Photo by <span style={{ color: "steelblue" }}>{owner}</span> from
-            <span style={{ color: "steelblue" }}>{source}</span>
+          <p>
+            <p style={{ fontSize: ".6rem" }}>
+              Photo by
+              <span style={{ color: "steelblue" }}> {owner} </span>
+              from
+              <span style={{ color: "steelblue" }}> {source}</span>
+            </p>
           </p>
         </div>
         <div className="body" style={{ padding: "1rem" }}>
@@ -44,7 +40,7 @@ const PostPreview = ({ title, author, url, owner, source, body, category }) => {
           <FontAwesomeIcon icon={faUser} /> {author}
         </p>
         <div>
-          <h4>{category} </h4>
+          <h4>#{category} </h4>
         </div>
       </div>
     </>
