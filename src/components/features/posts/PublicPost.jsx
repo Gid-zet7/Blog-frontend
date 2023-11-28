@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const PublicPost = ({ postId }) => {
   const container = {
-    marginTop: "2.5rem",
+    // marginTop: "2.5rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     padding: "1rem",
     alignItems: "center",
-    fontSize: ".8rem",
+    fontSize: ".9rem",
   };
   const { post } = useGetPubPostsQuery("publicList", {
     selectFromResult: ({ data }) => ({
@@ -22,7 +22,7 @@ const PublicPost = ({ postId }) => {
 
   const navigate = useNavigate();
 
-  const viewPost = () => navigate(`/dash/posts/view/${postId}`);
+  const viewPost = () => navigate(`/posts/${postId}`);
 
   if (post) {
     const created = new Date(post.createdAt).toLocaleString("en-US", {
@@ -34,46 +34,40 @@ const PublicPost = ({ postId }) => {
     let content;
     if (post) {
       // para.substr(0, 200) + "...";
-      const truncBody = post.body.substr(0, 200) + "...";
+      const truncBody = post.body.substr(0, 300) + "...";
       content = (
         <div style={container} onClick={viewPost}>
-          <div style={{ padding: "1rem" }}>
-            <h1>{post.title} </h1>
+          <div style={{ padding: "1rem 0" }}>
+            <h1 style={{ textDecoration: "underline" }}>{post.title} </h1>
           </div>
-          <div
-            className="image-container"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <div className="image-container">
             <img
               src={post.image.url}
               alt="something"
               style={{ width: "90%", height: "100%" }}
             />
-            <p style={{ fontSize: ".6rem" }}>
-              Photo by
-              <span style={{ color: "steelblue" }}> {post.image.owner} </span>
-              from
-              <span style={{ color: "steelblue" }}> {post.image.source}</span>
+            <p>
+              <p style={{ fontSize: ".6rem" }}>
+                Photo by
+                <span style={{ color: "steelblue" }}> {post.image.owner} </span>
+                from
+                <span style={{ color: "steelblue" }}> {post.image.source}</span>
+              </p>
             </p>
           </div>
 
-          <div style={{ padding: "1rem 1rem 1rem 2rem" }}>
+          <div style={{ padding: "1rem 0" }}>
             <p>{truncBody} </p>
           </div>
-          <div style={{ display: "flex", gap: 8, padding: 7 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <p>
               <FontAwesomeIcon icon={faUser} /> {post.username}
             </p>
             <p>#{post.category} </p>
+            <p>
+              <FontAwesomeIcon icon={faCalendar} /> {created}
+            </p>
           </div>
-          <p>
-            <FontAwesomeIcon icon={faCalendar} /> {created}
-          </p>
         </div>
       );
     }
