@@ -60,7 +60,7 @@ const Post = ({ postId }) => {
       <>
         <div style={container} onClick={viewPost}>
           <div style={{ padding: "1rem" }}>
-            <h1>Title: {post.title} </h1>
+            <h1>{post.title} </h1>
           </div>
           <div className="image-container">
             <img
