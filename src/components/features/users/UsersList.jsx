@@ -17,7 +17,7 @@ const UsersList = () => {
 
   let content;
 
-  if (isLoading) content = <PulseLoader color={"#BADA55"} />;
+  if (isLoading) content = <PulseLoader color={"#000"} />;
 
   if (isError) {
     content = <p className="errmsg">{error?.data?.message} </p>;
@@ -32,7 +32,10 @@ const UsersList = () => {
     // console.log(tableContent)
 
     content = (
-      <table className="table table--users">
+      <table
+        className="table table--users"
+        style={{ marginTop: "9rem", padding: "2rem" }}
+      >
         <thead>
           <tr>
             <th>Username</th>
