@@ -47,7 +47,7 @@ const PersistLogin = () => {
   } else if (isLoading) {
     // persist: yes, token: no
     console.log("loading");
-    content = <PulseLoader color={"#BADA55"} />;
+    content = <PulseLoader color={"#000"} className="pulse-loader" />;
   } else if (isError) {
     // persist: yes, token: no
     console.log("error");

@@ -20,7 +20,8 @@ const PublicPostsList = () => {
 
   let content;
 
-  if (isLoading) content = <PulseLoader color={"#BADA55"} />;
+  if (isLoading)
+    content = <PulseLoader color={"#000"} className="pulse-loader" />;
 
   if (isError) {
     content = <p className="errmsg">{error?.data?.message} </p>;

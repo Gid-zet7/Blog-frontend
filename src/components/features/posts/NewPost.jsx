@@ -9,7 +9,8 @@ const NewPost = () => {
     }),
   });
 
-  if (!users?.length) return <PulseLoader color={"#BADA55"} />;
+  if (!users?.length)
+    return <PulseLoader color={"#000"} className="pulse-loader" />;
 
   const content = <NewPostForm users={users} />;
 

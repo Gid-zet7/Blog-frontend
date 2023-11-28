@@ -23,6 +23,10 @@ ul {
   list-style: none;
 }
 
+.pulse-loader {
+  transform: translate(-50%, -50%);
+}
+
 form {
   display: flex;
   flex-direction: column;

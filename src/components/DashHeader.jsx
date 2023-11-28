@@ -94,7 +94,7 @@ const DashHeader = () => {
 
   let buttonContent;
   if (isLoading) {
-    buttonContent = <PulseLoader color={"#BADA55"} />;
+    buttonContent = <PulseLoader color={"#000"} className="pulse-loader" />;
   } else {
     buttonContent = (
       <>
