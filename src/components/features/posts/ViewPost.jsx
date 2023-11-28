@@ -24,7 +24,7 @@ const ViewPost = () => {
     justifyContent: "center",
     padding: "1rem",
     alignItems: "center",
-    marginTop: "8rem",
+    marginTop: "5rem",
   };
 
   const navigate = useNavigate();
@@ -54,25 +54,30 @@ const ViewPost = () => {
     return (
       <>
         <div style={container}>
-          <h1>Title: {post.title} </h1>
-          <p>Author: {post.username}</p>
-          <img
-            src={post.image.url}
-            alt="something"
-            style={{ width: "90%", height: "100%" }}
-          />
-          <p>{post.body} </p>
-          <p>#{post.category} </p>
-          <p>Date: {created} </p>
-          {editButton}
-          <button onClick={handleCommentView}>View Comments</button>
-          {viewComment && (
-            <>
-              <h1>Comments</h1>
-              <NewCommentForm postId={id} username={Username} />
-              <CommentsList postId={post.id} />
-            </>
-          )}
+          <div className="view-wrap">
+            <h1 style={{ marginBottom: "1rem" }}>{post.title} </h1>
+            <p style={{ marginBottom: "1rem" }}>
+              by {post.username} | {created}
+            </p>
+            <img
+              src={post.image.url}
+              alt="something"
+              style={{ width: "100%", height: "100%", marginBottom: "1rem" }}
+            />
+            <div className="post-body__container">
+              <p style={{ lineHeight: 2, letterSpacing: 0.8 }}>{post.body} </p>
+            </div>
+            <p>#{post.category} </p>
+            {editButton}
+            <button onClick={handleCommentView}>View Comments</button>
+            {viewComment && (
+              <>
+                <h1>Comments</h1>
+                <NewCommentForm postId={id} username={Username} />
+                <CommentsList postId={post.id} />
+              </>
+            )}
+          </div>
         </div>
       </>
     );
