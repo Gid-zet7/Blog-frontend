@@ -13,6 +13,7 @@ const PostPreview = ({ title, author, url, owner, source, body, category }) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          padding: "1rem",
         }}
       >
         <div style={{ padding: "1rem" }}>
@@ -22,7 +23,7 @@ const PostPreview = ({ title, author, url, owner, source, body, category }) => {
           <img
             src={url}
             alt="something"
-            style={{ width: "90%", height: "100%" }}
+            style={{ width: "100%", height: "100%" }}
           />
           <p>
             <p style={{ fontSize: ".6rem" }}>
