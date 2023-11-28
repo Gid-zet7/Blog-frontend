@@ -2,6 +2,7 @@ import { memo } from "react";
 import { useGetPubPostsQuery } from "./PublicPostsApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const PublicPost = ({ postId }) => {
   const container = {
@@ -19,6 +20,10 @@ const PublicPost = ({ postId }) => {
     }),
   });
 
+  const navigate = useNavigate();
+
+  const viewPost = () => navigate(`/dash/posts/view/${postId}`);
+
   if (post) {
     const created = new Date(post.createdAt).toLocaleString("en-US", {
       day: "numeric",
@@ -31,15 +36,31 @@ const PublicPost = ({ postId }) => {
       // para.substr(0, 200) + "...";
       const truncBody = post.body.substr(0, 200) + "...";
       content = (
-        <div style={container}>
+        <div style={container} onClick={viewPost}>
           <div style={{ padding: "1rem" }}>
             <h1>{post.title} </h1>
           </div>
-          <img
-            src={post.image.url}
-            alt="something"
-            style={{ width: "90%", height: "100%" }}
-          />
+          <div
+            className="image-container"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={post.image.url}
+              alt="something"
+              style={{ width: "90%", height: "100%" }}
+            />
+            <p style={{ fontSize: ".6rem" }}>
+              Photo by
+              <span style={{ color: "steelblue" }}> {post.image.owner} </span>
+              from
+              <span style={{ color: "steelblue" }}> {post.image.source}</span>
+            </p>
+          </div>
 
           <div style={{ padding: "1rem 1rem 1rem 2rem" }}>
             <p>{truncBody} </p>
@@ -50,7 +71,6 @@ const PublicPost = ({ postId }) => {
             </p>
             <p>#{post.category} </p>
           </div>
-
           <p>
             <FontAwesomeIcon icon={faCalendar} /> {created}
           </p>
