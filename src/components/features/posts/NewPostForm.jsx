@@ -83,15 +83,20 @@ const NewPostForm = ({ users }) => {
   //   const validBillClass = !bill ? "form__input--incomplete" : "";
   // const validBalanceClass = !balance ? "form__input--incomplete" : ''
 
+  const buttonContainer = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
   const content = (
     <>
-      <section id="new_form" style={{ marginTop: "9rem" }}>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h2>New Post</h2>
-        </div>
-        <p className={errClass}>{errContent}</p>
-
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h2>New Post</h2>
+      </div>
+      <section id="new_form" className="new-post__form">
         <form className="form" onSubmit={onSavePostClicked}>
+          <p className={errClass}>{errContent}</p>
           <label className="form__label" htmlFor="title">
             Title:
           </label>
@@ -172,42 +177,41 @@ const NewPostForm = ({ users }) => {
             onChange={onCategoryChanged}
           />
 
-          <div className="button_div">
+          <div className="save-btn__container" style={buttonContainer}>
             <button
               id="form__action-buttons"
-              className="icon-button"
+              className="save-btn"
               title="Save"
               disabled={!canSave}
             >
               Save
             </button>
           </div>
+          <div className="preview-btn__container" style={buttonContainer}>
+            <button
+              id="preview-button"
+              className="btn"
+              onClick={onPreviewChanged}
+            >
+              Preview
+            </button>
+          </div>
         </form>
-        <div className="button_div">
-          <button
-            id="preview-button"
-            className="icon-button"
-            title="Save"
-            value={preview}
-            onClick={onPreviewChanged}
-          >
-            Preview
-          </button>
-        </div>
+
+        {preview && (
+          <section className="preview">
+            <PostPreview
+              title={title}
+              author={author}
+              url={displayImage}
+              owner={displayImageOwner}
+              source={displayImageSource}
+              body={body}
+              category={category}
+            />
+          </section>
+        )}
       </section>
-      {preview && (
-        <section className="preview">
-          <PostPreview
-            title={title}
-            author={author}
-            url={displayImage}
-            owner={displayImageOwner}
-            source={displayImageSource}
-            body={body}
-            category={category}
-          />
-        </section>
-      )}
     </>
   );
 
