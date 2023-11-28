@@ -28,7 +28,6 @@ const EditPost = () => {
     return <PulseLoader color={"#000"} className="pulse-loader" />;
 
   if (!isAdmin) {
-    console.log(post);
     if (post.username !== Username) {
       return <p>No access</p>;
     }
