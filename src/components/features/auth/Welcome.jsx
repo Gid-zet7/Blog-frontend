@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import PublicPostsList from "../posts/PublicPostsList";
+import PostsList from "../posts/PostsList";
+// import PublicPostsList from "../posts/PublicPostsList";
 
 const Welcome = () => {
   const { Username } = useAuth();
@@ -21,13 +22,19 @@ const Welcome = () => {
 
   const content = (
     <>
-      <section className="welcome" style={container}>
-        <p style={{ fontSize: ".8rem" }}>{today}</p>
-        <h4>Welcome {Username}, Let's get Creative</h4>
-      </section>
-      <section>
-        <PublicPostsList />
-      </section>
+      <div className="sections-container">
+        <section className="welcome" style={container}>
+          <div className="section-wrap">
+            <p style={{ fontSize: ".8rem" }}>{today}</p>
+            <h4>Welcome {Username}, Let's get Creative</h4>
+          </div>
+        </section>
+        <section>
+          <div className="section-wrap">
+            <PostsList />
+          </div>
+        </section>
+      </div>
     </>
   );
   return content;
