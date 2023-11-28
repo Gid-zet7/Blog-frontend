@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import PostsList from "../posts/PostsList";
+import PublicPostsList from "../posts/PublicPostsList";
 
 const Welcome = () => {
   const { Username } = useAuth();
@@ -12,7 +12,6 @@ const Welcome = () => {
   }).format(date);
 
   const container = {
-    marginTop: "8rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -27,7 +26,7 @@ const Welcome = () => {
         <h4>Welcome {Username}, Let's get Creative</h4>
       </section>
       <section>
-        <PostsList />
+        <PublicPostsList />
       </section>
     </>
   );
