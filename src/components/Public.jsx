@@ -21,9 +21,10 @@ const Public = () => {
     position: "fixed",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    gap: "5rem",
+    gap: "2rem",
+    width: "clamp(20rem, 45vw, 60rem)",
     padding: "0 1rem",
     fontSize: ".8rem",
     listStyle: "none",
@@ -31,7 +32,7 @@ const Public = () => {
 
   const authContainerStyles = {
     display: "flex",
-    gap: "2rem",
+    gap: "1rem",
   };
 
   const buttonStyles = {
@@ -42,14 +43,6 @@ const Public = () => {
     border: "none",
     marginLeft: "3rem",
     borderRadius: 8,
-  };
-
-  const signupStyles = {
-    padding: ".5em 1em",
-    display: "none",
-    gap: ".5rem",
-    backgroundColor: "#000",
-    border: "none",
   };
 
   const linkStyles = {
@@ -72,6 +65,9 @@ const Public = () => {
       <div className="Public">
         <header style={headerStyles}>
           <ul style={ulStyles}>
+            {/* <div>
+              <p style={{ textDecoration: "underline" }}>Topics</p>
+            </div> */}
             <div className="public__title">
               <li>
                 <h1>Bincika</h1>
@@ -87,7 +83,7 @@ const Public = () => {
                 </button>
               </li>
               <li>
-                <button style={signupStyles}>
+                <button className="signup-link">
                   <Link to={"/signup"} style={linkStyles}>
                     Sign up
                   </Link>
@@ -96,12 +92,13 @@ const Public = () => {
             </div>
           </ul>
         </header>
-        <section style={sectionGradient}>
+        <section className="section-gradient" style={sectionGradient}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               gap: "1rem",
+              maxWidth: "60rem",
             }}
           >
             <h1>Embark on a learning adventure.</h1>
@@ -112,9 +109,58 @@ const Public = () => {
             </p>
           </div>
         </section>
-        <section>
-          <PublicPostsList />
+        <div className="sections-container">
+          <section>
+            <div className="section-wrap">
+              <PublicPostsList />
+            </div>
+          </section>
+          <section>
+            <div className="section-wrap">
+              <h2>Want to be an author of this Blog?</h2>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed,
+                odit culpa. Laboriosam fugiat, voluptates animi distinctio
+                officiis sapiente dolores quis ex dolorum debitis. Corporis
+                veniam, impedit amet voluptatibus alias repellat consequuntur
+                ratione molestiae adipisci iste nobis numquam iure dolorum ex
+                libero aspernatur cupiditate tempore id magnam. Fugiat minus
+                repellat suscipit explicabo atque labore tenetur, dignissimos a?
+                Sed iusto tempore quae officia necessitatibus nobis velit minima
+                enim neque adipisci dolorem optio nulla tempora quis inventore
+                doloribus amet itaque culpa, dolor numquam reprehenderit
+                incidunt accusantium. Non amet eaque praesentium sequi quibusdam
+                vel ea quidem repellendus asperiores quis ut labore obcaecati,
+                repudiandae suscipit fuga, repellat veritatis dolor eligendi
+              </p>
+            </div>
+          </section>
+        </div>
+        <section className="section-gradient" style={sectionGradient}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              maxWidth: "60rem",
+            }}
+          >
+            <h1>Featured categories</h1>
+            <div
+              style={{
+                display: "flex",
+                gap: "1rem",
+                width: "80%",
+              }}
+            >
+              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Art</p>
+              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Cars</p>
+              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Tech</p>
+              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Psychology</p>
+            </div>
+          </div>
         </section>
+
         <footer>
           <div className="about-footer">
             <h4>About Bincika</h4>
