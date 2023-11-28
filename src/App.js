@@ -17,6 +17,8 @@ import RequireAuth from "./components/features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import useTitle from "./hooks/useTitle";
 import Signup from "./components/features/auth/Signup";
+import ViewPubPost from "./components/features/posts/ViewPubPost";
+import MyPostsList from "./components/features/posts/MyPostsList";
 
 function App() {
   useTitle("Blog Post");
@@ -27,6 +29,7 @@ function App() {
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="posts/:id" element={<ViewPubPost />} />
 
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
@@ -39,6 +42,7 @@ function App() {
 
                 <Route path="posts">
                   <Route index element={<PostsList />} />
+                  <Route path="myposts" element={<MyPostsList />} />
                   <Route path="new" element={<NewPost />} />
                   <Route path=":id" element={<EditPost />} />
                   <Route path="view/:id" element={<ViewPost />} />
