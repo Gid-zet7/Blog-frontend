@@ -30,7 +30,7 @@ const PublicPostsList = () => {
     const { ids } = posts;
 
     // let filteredIds = ids.filter(
-    //   (postId) => entities[postId].username === "Gidzet"
+    //   (postId) => entities[postId].status === "Public"
     // );
 
     const postContent =
