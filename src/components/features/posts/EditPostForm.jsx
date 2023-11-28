@@ -89,8 +89,8 @@ const EditPostForm = ({ post, users }) => {
 
   const content = (
     <>
-      <section id="new_forms">
-        <h2>New Post</h2>
+      <section id="edit_form">
+        <h2>Edit Post</h2>
         <p className={errClass}>{errContent}</p>
 
         <form className="form" onSubmit={onSavePostClicked}>
