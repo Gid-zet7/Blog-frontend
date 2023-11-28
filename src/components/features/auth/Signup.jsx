@@ -72,7 +72,15 @@ const Signup = () => {
   if (isLoading) return <PulseLoader color={"#BADA55"} />;
 
   const content = (
-    <section id="signup__form" className="auth">
+    <section
+      id="signup__form"
+      className="auth"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <div>
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
@@ -138,7 +146,9 @@ const Signup = () => {
             required
           />
 
-          <button id="auth__btn">Sign Up</button>
+          <button id="auth__btn" className="btn">
+            Sign Up
+          </button>
 
           <div className="auth__container">
             Already have an account?
