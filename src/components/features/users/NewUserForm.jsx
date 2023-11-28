@@ -97,8 +97,12 @@ const NewUserForm = () => {
 
   const content = (
     <>
-      <section id="new_user_forms">
+      <section id="new_user_form" style={{ marginTop: "9rem" }}>
         <p className={errClass}>{error?.data?.message}</p>
+
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <h2>New User</h2>
+        </div>
 
         <form className="form" onSubmit={onSaveUserClicked}>
           <label htmlFor="username">Username:</label>
