@@ -29,7 +29,7 @@ const DashHeader = () => {
 
   const onNewPostClicked = () => navigate("/dash/posts/new");
   const onNewUserClicked = () => navigate("/dash/users/new");
-  const onPostsClicked = () => navigate("/dash/posts");
+  const onPostsClicked = () => navigate("/dash/posts/myposts");
   const onUsersClicked = () => navigate("/dash/users");
 
   const onLogoutClicked = () => sendLogout();
@@ -64,8 +64,8 @@ const DashHeader = () => {
   let postsButton = null;
   if (!POSTS_REGEX.test(pathname) && pathname.includes("/dash")) {
     postsButton = (
-      <button title="Bills" onClick={onPostsClicked}>
-        Posts
+      <button title="Posts" onClick={onPostsClicked}>
+        My Posts
       </button>
     );
   }
@@ -112,6 +112,18 @@ const DashHeader = () => {
     );
   }
 
+  const divStyles = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "2rem",
+    width: "clamp(20rem, 45vw, 60rem)",
+    padding: "0 1rem",
+    fontSize: ".8rem",
+    listStyle: "none",
+  };
+
   const linkStyles = {
     textDecoration: "none",
     color: "#000",
@@ -124,7 +136,10 @@ const DashHeader = () => {
       <p className={errClass}>{error?.data?.message} </p>
 
       <header className="dash_header">
-        <div className={`dash-header__container ${dashClass}`}>
+        <div
+          className={`dash-header__container ${dashClass}`}
+          style={divStyles}
+        >
           <Link to="/dash/posts" style={linkStyles}>
             <h1 className="dash-header__title">Bincika</h1>
           </Link>
