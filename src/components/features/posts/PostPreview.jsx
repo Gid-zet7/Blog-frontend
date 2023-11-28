@@ -1,25 +1,48 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 const PostPreview = ({ title, author, url, owner, source, body, category }) => {
   return (
     <>
       <div>
-        <h1>Preview</h1>
+        <h1 style={{ display: "flex", justifyContent: "center" }}>Preview</h1>
       </div>
-      <div>
-        <div className="title">
-          <h1>{title}</h1>
-          <p>by {author}</p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ padding: "1rem" }}>
+          <h1>Title: {title} </h1>
         </div>
-        <div className="image-container">
-          <img src={url} alt="display" />
-          {/* ?not-from-cache-please */}
-          {/* crossOrigin="Anonymous" */}
-          <p>
-            Photo by {owner} from {source}
+        <div
+          className="image-container"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src={url}
+            alt="display"
+            style={{ width: "90%", height: "100%" }}
+          />
+          <p style={{ fontSize: ".6rem" }}>
+            Photo by <span style={{ color: "steelblue" }}>{owner}</span> from
+            <span style={{ color: "steelblue" }}>{source}</span>
           </p>
         </div>
-        <div className="body">
+        <div className="body" style={{ padding: "1rem" }}>
           <p>{body} </p>
         </div>
+        <p>
+          <FontAwesomeIcon icon={faUser} /> {author}
+        </p>
         <div>
           <h4>{category} </h4>
         </div>
