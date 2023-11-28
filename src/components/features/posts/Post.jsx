@@ -81,13 +81,16 @@ const Post = ({ postId }) => {
           <div style={{ padding: "1rem" }}>
             <p>{truncBody} </p>
           </div>
-          <p>
-            <FontAwesomeIcon icon={faUser} /> {post.username}
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faCalendar} /> {created}
-          </p>
-          <p>#{post.category} </p>
+          <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            <p>
+              <FontAwesomeIcon icon={faUser} /> {post.username}
+            </p>
+            <p>#{post.category} </p>
+            <p>
+              <FontAwesomeIcon icon={faCalendar} /> {created}
+            </p>
+          </div>
+
           {editButton}
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
