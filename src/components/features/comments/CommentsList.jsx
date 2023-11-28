@@ -1,7 +1,6 @@
 import { useGetCommentsQuery } from "./CommentsApiSlice";
 import Comment from "./Comment";
 import { PulseLoader } from "react-spinners";
-import { useEffect } from "react";
 
 const CommentsList = ({ postId }) => {
   const {
@@ -14,10 +13,6 @@ const CommentsList = ({ postId }) => {
     pollingInterval: 15000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
-  });
-
-  useEffect(() => {
-    console.log(postId);
   });
 
   let content;

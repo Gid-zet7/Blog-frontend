@@ -26,7 +26,6 @@ const NewCommentForm = ({ username, postId }) => {
   const canSave = [content].every(Boolean) && !isLoading;
 
   const onSavePostClicked = async (e) => {
-    console.log("Clicked");
     e.preventDefault();
 
     await addNewComment({
