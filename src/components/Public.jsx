@@ -23,7 +23,7 @@ const Public = () => {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: "2rem",
+    // gap: "2rem",
     width: "clamp(20rem, 45vw, 60rem)",
     padding: "0 1rem",
     fontSize: ".8rem",
@@ -32,13 +32,13 @@ const Public = () => {
 
   const authContainerStyles = {
     display: "flex",
-    gap: "1rem",
+    // gap: "1rem",
   };
 
   const buttonStyles = {
     padding: ".5em 1em",
     display: "flex",
-    gap: ".5rem",
+    // gap: ".5rem",
     backgroundColor: "#000",
     border: "none",
     marginLeft: "3rem",
@@ -97,7 +97,7 @@ const Public = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "1rem",
+              // gap: "1rem",
               maxWidth: "60rem",
             }}
           >
@@ -138,10 +138,10 @@ const Public = () => {
         </div>
         <section className="section-gradient" style={sectionGradient}>
           <div
+            className="featured-categories"
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "1rem",
               maxWidth: "60rem",
             }}
           >
@@ -149,7 +149,7 @@ const Public = () => {
             <div
               style={{
                 display: "flex",
-                gap: "1rem",
+                // gap: "1rem",
                 width: "80%",
               }}
             >

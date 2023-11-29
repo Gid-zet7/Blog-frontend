@@ -32,8 +32,32 @@ form {
   flex-direction: column;
   justify-content: center;
   padding: 1.5rem;
-  gap: 1rem;
+  /* gap: 1rem; */
   
+}
+
+form > label {
+  margin-bottom: 1rem;
+}
+
+form > input {
+  margin-bottom: 1rem;
+}
+
+form > select {
+  margin-bottom: 1rem;
+}
+
+form > textarea {
+  margin-bottom: 1rem;
+}
+
+form > div {
+  margin-bottom: 1rem;
+}
+
+form > button {
+  margin-bottom: 1rem;
 }
 
 input {
@@ -57,6 +81,10 @@ input {
 
 .btn:hover {
   background-color: #252424;
+}
+
+.login__btn > svg {
+ margin-left: .5rem;
 }
 
 .save-btn {
@@ -141,8 +169,12 @@ input {
 
 .dash-header__container {
   display: flex;
-  gap: 8rem;
+  /* gap: 8rem; */
 }
+
+/* .dash-header__container > div {
+  margin-left: 8rem;
+} */
 
 .user-icon {
   position: relative;
@@ -153,7 +185,7 @@ input {
   flex-direction: column;
   position: absolute;
   align-items: center;
-  gap: 2rem;
+  /* gap: 2rem; */
   left: -2.5rem;
   top: 2rem;
   width: 100px;
@@ -164,7 +196,11 @@ input {
 
 .logout {
   display: flex;
-  gap: .5rem;
+  /* gap: .5rem; */
+}
+
+.logout > svg {
+  margin-left: .5rem;
 }
 
 .dash-header__nav > button {
@@ -189,17 +225,33 @@ input {
 
 }
 
+.auth__container > li {
+  margin-right: 1rem;
+}
+
+.section-gradient > div > h1 {
+  margin-bottom: 1rem;
+}
+
+.featured-categories > div > p {
+  margin-left: 1rem;
+}
+
 
 /* Footer */
 footer {
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
   position: absolute;
   bottom: 0;
   color: #fff;
   width: 100vw;
   padding: 2rem 2.5rem;
   background-color: #000;
+}
+
+footer > div {
+  margin-left: 1rem;
 }
 
 .sections-container {
@@ -238,7 +290,7 @@ footer {
 }
 
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
   .signup-link {
     display: block;
   }

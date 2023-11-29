@@ -56,7 +56,6 @@ const NewPostForm = ({ users }) => {
   };
 
   const onSavePostClicked = async (e) => {
-    console.log("Clicked");
     e.preventDefault();
 
     await addNewPost({

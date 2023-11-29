@@ -34,7 +34,7 @@ const ViewPubPost = () => {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: "2rem",
+    // gap: "2rem",
     width: "clamp(20rem, 45vw, 60rem)",
     padding: "0 1rem",
     fontSize: ".8rem",
@@ -43,13 +43,13 @@ const ViewPubPost = () => {
 
   const authContainerStyles = {
     display: "flex",
-    gap: "1rem",
+    // gap: "1rem",
   };
 
   const buttonStyles = {
     padding: ".5em 1em",
     display: "flex",
-    gap: ".5rem",
+    // gap: ".5rem",
     backgroundColor: "#000",
     border: "none",
     marginLeft: "3rem",

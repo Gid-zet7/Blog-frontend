@@ -22,7 +22,6 @@ const DashFooter = () => {
 
   const footerStyles = {
     display: "flex",
-    gap: "1rem",
     position: "absolute",
     bottom: 0,
     color: "#fff",
