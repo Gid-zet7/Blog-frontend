@@ -93,7 +93,7 @@ const NewPostForm = ({ users }) => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <h2>New Post</h2>
       </div>
-      <section id="new_form" className="new-post__form">
+      <section id="new_form" className="post__form">
         <form className="form" onSubmit={onSavePostClicked}>
           <p className={errClass}>{errContent}</p>
           <label className="form__label" htmlFor="title">
