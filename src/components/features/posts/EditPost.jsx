@@ -25,7 +25,11 @@ const EditPost = () => {
   });
 
   if (!post || !users?.length)
-    return <PulseLoader color={"#000"} className="pulse-loader" />;
+    return (
+      <div className="loader-container">
+        <PulseLoader color={"#000"} className="pulse-loader" />
+      </div>
+    );
 
   if (!isAdmin) {
     if (post.username !== Username) {
@@ -37,7 +41,9 @@ const EditPost = () => {
     post && users ? (
       <EditPostForm post={post} users={users} />
     ) : (
-      <PulseLoader color={"#000"} className="pulse-loader" />
+      <div className="loader-container">
+        <PulseLoader color={"#000"} className="pulse-loader" />
+      </div>
     );
 
   return content;
