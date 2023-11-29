@@ -94,7 +94,9 @@ const Post = ({ postId }) => {
           {editButton}
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={handleCommentView}>View Comments</button>
+          <button className="btn" onClick={handleCommentView}>
+            View Comments
+          </button>
         </div>
 
         {viewComment && (
