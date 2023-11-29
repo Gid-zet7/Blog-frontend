@@ -69,7 +69,9 @@ const ViewPost = () => {
             </div>
             <p>#{post.category} </p>
             {editButton}
-            <button onClick={handleCommentView}>View Comments</button>
+            <button className="btn" onClick={handleCommentView}>
+              View Comments
+            </button>
             {viewComment && (
               <>
                 <h1>Comments</h1>
