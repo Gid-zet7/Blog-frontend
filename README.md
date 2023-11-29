@@ -1,3 +1,7 @@
+# Live Demo
+
+You can find a live demo of the app [here](https://bincika.onrender.com/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
