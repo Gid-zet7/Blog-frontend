@@ -353,12 +353,12 @@ footer > div {
     /* gap: 50rem; */
   }
 
-  .post__form>form {
+  .post__form > form {
     max-width: 30vw;
     flex: 1;
   }
 
-  .post__form>section {
+  .post__form > section {
     flex: 2;
   }
 
