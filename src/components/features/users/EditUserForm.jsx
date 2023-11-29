@@ -110,7 +110,7 @@ const EditUserForm = ({ user }) => {
   const content = (
     <>
       <p className={errClass}>{errContent} </p>
-      <section id="edit_user_forms">
+      <section id="edit_user_forms" className="form_container">
         <form className="form" onSubmit={onSaveUserClicked}>
           <label htmlFor="username">Username:</label>
           <input
