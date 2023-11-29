@@ -23,9 +23,9 @@ ul {
   list-style: none;
 }
 
-.pulse-loader {
+/* .pulse-loader {
   transform: translate(-50%, -50%);
-}
+} */
 
 form {
   display: flex;
@@ -266,7 +266,7 @@ footer > div {
   justify-content: center;
   align-items: center;
   max-width: 60rem;
-  padding: 2rem 3rem;
+  /* padding: 2rem 3rem; */
     
 }
 
@@ -320,6 +320,10 @@ footer > div {
   .post-body__container {
     padding-left: 6rem;
     padding-right: 6rem;
+  }
+
+  .section-wrap {
+    padding: 2rem 3rem;
   }
 }
   
