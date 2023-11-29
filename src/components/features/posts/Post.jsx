@@ -66,7 +66,7 @@ const Post = ({ postId }) => {
             <img
               src={post.image.url}
               alt="something"
-              style={{ width: "90%", height: "100%" }}
+              style={{ width: "100%", height: "100%" }}
             />
             <p>
               <p style={{ fontSize: ".6rem" }}>
