@@ -31,15 +31,15 @@ const PublicPostsList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = posts;
+    const { ids, entities } = posts;
 
-    // let filteredIds = ids.filter(
-    //   (postId) => entities[postId].status === "Public"
-    // );
+    let filteredIds = ids.filter(
+      (postId) => entities[postId].public === "true"
+    );
 
     const postContent =
       ids?.length &&
-      ids.map((postId) => <PublicPost key={postId} postId={postId} />);
+      filteredIds.map((postId) => <PublicPost key={postId} postId={postId} />);
 
     content = <>{postContent}</>;
 
