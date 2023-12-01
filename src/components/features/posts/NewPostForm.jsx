@@ -19,6 +19,7 @@ const NewPostForm = ({ users }) => {
   const [displayImageOwner, setDisplayImageOwner] = useState("Daniela Beleva");
   const [displayImageSource, setDisplayImageSource] = useState("Unsplash");
   const [category, setCategory] = useState("not known");
+  const [publicPost, setPublicPost] = useState(false);
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const NewPostForm = ({ users }) => {
   const onPreviewChanged = () => {
     setPreview((prevState) => !prevState);
   };
+  const handleToggle = () => setPublicPost((prev) => !prev);
 
   const canSave = [title, author, body, category].every(Boolean) && !isLoading;
 
@@ -54,6 +56,10 @@ const NewPostForm = ({ users }) => {
     owner: displayImageOwner,
     source: displayImageSource,
   };
+
+  useEffect(() => {
+    console.log(publicPost);
+  }, [publicPost]);
 
   const onSavePostClicked = async (e) => {
     e.preventDefault();
@@ -64,6 +70,7 @@ const NewPostForm = ({ users }) => {
       image,
       body,
       category,
+      publicPost,
     });
   };
 
@@ -73,6 +80,18 @@ const NewPostForm = ({ users }) => {
         {user.username}
       </option>
     );
+  });
+
+  const tags = [
+    "Travel",
+    "Entertainment",
+    "Law",
+    "Real life Stories",
+    "Psychology",
+  ];
+
+  const tagOptions = tags.map((tag) => {
+    return <option>{tag}</option>;
   });
 
   const errClass = isError ? "errmsg" : "offscreen";
@@ -93,7 +112,13 @@ const NewPostForm = ({ users }) => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <h2>New Post</h2>
       </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button id="preview-button" className="btn" onClick={onPreviewChanged}>
+          Preview
+        </button>
+      </div>
       <section id="new_form" className="post__form">
+        <div className="preview-btn__container" style={buttonContainer}></div>
         <form className="form" onSubmit={onSavePostClicked}>
           <p className={errClass}>{errContent}</p>
           <label className="form__label" htmlFor="title">
@@ -167,14 +192,28 @@ const NewPostForm = ({ users }) => {
           <label className="form__label" htmlFor="category">
             Category:
           </label>
-          <input
-            className={"form__input form__input--text"}
+          <select
+            className={`form__input`}
             id="category"
-            type="text"
             name="category"
             value={category}
             onChange={onCategoryChanged}
-          />
+          >
+            <option>--Please select--</option>
+            {tagOptions}
+          </select>
+
+          <label className="form__label" htmlFor="public">
+            <input
+              id="public"
+              name="public"
+              type="checkbox"
+              checked={publicPost}
+              value={publicPost}
+              onChange={handleToggle}
+            />
+            Make this blog public
+          </label>
 
           <div className="save-btn__container" style={buttonContainer}>
             <button
@@ -184,15 +223,6 @@ const NewPostForm = ({ users }) => {
               disabled={!canSave}
             >
               Save
-            </button>
-          </div>
-          <div className="preview-btn__container" style={buttonContainer}>
-            <button
-              id="preview-button"
-              className="btn"
-              onClick={onPreviewChanged}
-            >
-              Preview
             </button>
           </div>
         </form>
@@ -212,6 +242,8 @@ const NewPostForm = ({ users }) => {
         )}
       </section>
     </>
+
+    //  eWpBNXRHfTI
   );
 
   return content;
