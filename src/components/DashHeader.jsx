@@ -1,11 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowDownShortWide,
-  faRightFromBracket,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useSendLogoutMutation } from "./features/auth/authApiSlice";
 import useAuth from "../hooks/useAuth";
 import { PulseLoader } from "react-spinners";
@@ -149,7 +145,16 @@ const DashHeader = () => {
           </Link>
           <div className="user-icon">
             <FontAwesomeIcon icon={faUser} />
-            <FontAwesomeIcon icon={faArrowDownShortWide} />
+            <svg
+              height="12px"
+              id="arrow"
+              version="1.1"
+              viewBox="0 0 512 512"
+              width="12px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " />
+            </svg>
             <nav className="dash-header__nav">{buttonContent}</nav>
           </div>
         </div>
