@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 import PublicPostsList from "./features/posts/PublicPostsList";
+import AfricaPubPostsList from "./features/posts/Africa/AfricaPubPostList";
+import EntertainmentPubList from "./features/posts/Entertainment/EntertainmentPubList";
+import RealLifePubList from "./features/posts/RealLifeStories/RealLifePubList";
+import LawPubPostList from "./features/posts/Law/LawPubPostList";
 
 const Public = () => {
   const headerStyles = {
@@ -103,16 +107,45 @@ const Public = () => {
           >
             <h1>Embark on a learning adventure.</h1>
             <p style={{ lineHeight: 1.5, fontSize: ".6rem" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-              maiores natus tenetur repellat fugiat? Aliquid minima porro quis
-              eligendi neque!
+              Just like any adventure, the path of learning is filled with
+              challenges and surprises. It involves overcoming obstacles, facing
+              the unknown, and adapting to new landscapes of understanding. Each
+              lesson, whether big or small, becomes a stepping stone, propelling
+              you further into the realm of expertise and wisdom.
             </p>
           </div>
         </section>
         <div className="sections-container">
           <section>
-            <div className="section-wrap">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "1rem",
+              }}
+            >
+              <h1>Top Stories</h1>
+            </div>
+            <div id="public-posts__container" className="section-wrap">
               <PublicPostsList />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                fontSize: "2rem",
+              }}
+            >
+              <button
+                style={{
+                  padding: "1rem 2rem",
+                  color: "#fff",
+                  backgroundColor: "#000",
+                  border: "none",
+                }}
+              >
+                See All Posts
+              </button>
             </div>
           </section>
           <section>
@@ -139,6 +172,133 @@ const Public = () => {
             </div>
           </section>
         </div>
+        <section className="Africa-section">
+          <div>
+            <div style={{ lineHeight: 1.5, padding: "2rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  color: "#df4439",
+                  fontSize: "3rem",
+                }}
+              >
+                <h2>Beautiful Africa</h2>
+              </div>
+              <div className="Africa__section-wrap">
+                <AfricaPubPostsList />
+
+                {/* <AfricaPubPostsList /> */}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  fontSize: "2rem",
+                }}
+              >
+                <button
+                  style={{
+                    padding: "1rem 2rem",
+                    backgroundColor: "#fff",
+                    border: "none",
+                    fontSize: "1rem",
+                    fontWeight: "200",
+                    letterSpacing: 7,
+                  }}
+                >
+                  See All Posts
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="Entertainment-section">
+          <div>
+            <div style={{ lineHeight: 1.5, padding: "2rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  color: "#a5ff69",
+                  fontSize: "2rem",
+                }}
+              >
+                <h2>Entertainment news</h2>
+              </div>
+              <div className="Entertainment__section-wrap">
+                <EntertainmentPubList />
+                {/* <AfricaPubPostsList /> */}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  fontSize: "2rem",
+                }}
+              >
+                <button
+                  style={{
+                    padding: "1rem 2rem",
+                    backgroundColor: "#fff",
+                    border: "none",
+                    fontSize: "1rem",
+                    fontWeight: "200",
+                    letterSpacing: 7,
+                  }}
+                >
+                  See All Posts
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className="sections-container">
+          <section>
+            <div className="section-wrap">
+              <div style={{ lineHeight: 1.5, padding: "2rem" }}>
+                <h2>#Real life Stories</h2>
+                <div>
+                  <RealLifePubList />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section className="Law-section">
+          <div
+            className="law__background-image"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                color: "#fff",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "2rem",
+              }}
+            >
+              <h1>Do the laws of Ghana even work?</h1>
+            </div>
+          </div>
+        </section>
+        <div className="sections-container">
+          <section>
+            <div className="section-wrap">
+              <div style={{ lineHeight: 1.5, padding: "2rem" }}>
+                <div>
+                  <LawPubPostList />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
         <section className="section-gradient" style={sectionGradient}>
           <div
             className="featured-categories"
@@ -156,10 +316,14 @@ const Public = () => {
                 width: "80%",
               }}
             >
-              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Art</p>
-              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Cars</p>
-              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Tech</p>
-              <p style={{ lineHeight: 1.5, fontSize: "1rem" }}>#Psychology</p>
+              <p style={{ lineHeight: 1.5, fontSize: ".7rem" }}>#Travel</p>
+              <p style={{ lineHeight: 1.5, fontSize: ".7rem" }}>
+                #Entertainment news
+              </p>
+              <p style={{ lineHeight: 1.5, fontSize: ".7rem" }}>
+                #Real life Stories
+              </p>
+              <p style={{ lineHeight: 1.5, fontSize: ".7rem" }}>#Law</p>
             </div>
           </div>
         </section>
