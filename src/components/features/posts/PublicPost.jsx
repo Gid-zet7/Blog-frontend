@@ -38,7 +38,7 @@ const PublicPost = ({ postId }) => {
       content = (
         <div style={container} onClick={viewPost}>
           <div style={{ padding: "1rem 0" }}>
-            <h1 style={{ textDecoration: "underline" }}>{post.title} </h1>
+            <h1>{post.title} </h1>
           </div>
           <div className="image-container">
             <img
