@@ -23,6 +23,7 @@ const EditPostForm = ({ post, users }) => {
     post.image.source
   );
   const [category, setCategory] = useState(post.category);
+  const [publicPost, setPublicPost] = useState(post.public);
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
@@ -54,12 +55,25 @@ const EditPostForm = ({ post, users }) => {
     setPreview((prevState) => !prevState);
   };
 
+  const handleToggle = () => setPublicPost((prev) => !prev);
+
   const options = users.map((user) => {
     return (
       <option key={user.id} value={user.username}>
         {user.username}
       </option>
     );
+  });
+
+  const tags = [
+    "Travel",
+    "Entertainment",
+    "Law",
+    "Real life Stories",
+    "Psychology",
+  ];
+  const tagOptions = tags.map((tag) => {
+    return <option>{tag}</option>;
   });
 
   const errClass = isError || isDelError ? "errmsg" : "offscreen";
@@ -84,6 +98,7 @@ const EditPostForm = ({ post, users }) => {
       image,
       body,
       category,
+      publicPost,
     });
   };
 
@@ -91,6 +106,11 @@ const EditPostForm = ({ post, users }) => {
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <h2>Edit Post</h2>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button id="preview-button" className="btn" onClick={onPreviewChanged}>
+          Preview
+        </button>
       </div>
       <p className={errClass}>{errContent}</p>
       <section id="edit_form" className="post__form">
@@ -165,14 +185,28 @@ const EditPostForm = ({ post, users }) => {
           <label className="form__label" htmlFor="category">
             Category:
           </label>
-          <input
-            className={"form__input form__input--text"}
+          <select
+            className={`form__input`}
             id="category"
-            type="text"
             name="category"
             value={category}
             onChange={onCategoryChanged}
-          />
+          >
+            <option>--Please select--</option>
+            {tagOptions}
+          </select>
+
+          <label className="form__label" htmlFor="public">
+            <input
+              id="public"
+              name="public"
+              type="checkbox"
+              checked={publicPost}
+              value={publicPost}
+              onChange={handleToggle}
+            />
+            Make this blog public
+          </label>
 
           <div className="button_div">
             <button
@@ -192,19 +226,6 @@ const EditPostForm = ({ post, users }) => {
               onClick={onDeletePostClicked}
             >
               Delete
-            </button>
-          </div>
-
-          <div className="button_container">
-            <button
-              id="preview-button"
-              className="btn"
-              title="Save"
-              type="button"
-              value={preview}
-              onClick={onPreviewChanged}
-            >
-              Preview
             </button>
           </div>
         </form>
