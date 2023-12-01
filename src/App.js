@@ -21,7 +21,7 @@ import ViewPubPost from "./components/features/posts/ViewPubPost";
 import MyPostsList from "./components/features/posts/MyPostsList";
 
 function App() {
-  useTitle("Blog Post");
+  useTitle("Bincika");
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
