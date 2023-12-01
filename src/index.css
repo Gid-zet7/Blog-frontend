@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -177,6 +178,11 @@ input {
   position: relative;
 }
 
+#arrow {
+  transform: rotate(270deg);
+  
+}
+
 .dash-header__nav {
   display: flex;
   flex-direction: column;
@@ -210,6 +216,10 @@ input {
 .user-icon:hover .dash-header__nav,
 .user-icon:focus-within .dash-header__nav {
   display: block;
+}
+
+.user-icon:hover #arrow {
+  transform: rotate(90deg);
 }
 
 .signup-link {
@@ -246,6 +256,38 @@ input {
   right: 50%;
   transform: translate(50%, -50%);
 
+}
+
+.Africa-section {
+  background-color: rgb(16, 15, 77);
+}
+
+.Africa__section-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms ease-in-out;
+}
+
+.Entertainment-section {
+  background-color: rgb(156, 41, 26);
+}
+.Entertainment__section-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms ease-in-out;
+}
+
+.law__background-image {
+  background: url("../src/assets/clarisse-meyer-jKU2NneZAbI-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 1rem;
+  width: 100vw;
+  height: 50vh;
 }
 
 /* Footer */
@@ -340,11 +382,80 @@ footer > div {
   }
 
   .section-wrap {
-    padding: 2rem 3rem;
+    padding: 2rem 0rem;
   }
 }
 
 @media screen and (min-width: 950px) {
+
+  #public-posts__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+ 
+  #public-posts__container > div:nth-child(3) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+
+  /* .Africa-section {
+    background-color: rgb(16, 15, 77);
+  } */
+
+  /* .dash-header__nav {
+    width: 150px;
+    
+  } */
+
+  .user-icon:hover .dash-header__nav {
+    display: block;
+    top: 2rem;
+    
+  }
+
+  .Africa__section-wrap {
+    /* position: relative; */
+    padding-left: 8rem;
+    padding-right: 8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 10rem);
+  }
+
+  .Africa__section-wrap:hover {
+    grid-template-columns: repeat(3, 19.5rem);
+  }
+
+  .Africa__section-wrap > div {
+    top: -3rem;
+  }
+
+  /* .Africa__section-wrap > div:nth-child(2) > div > div > h1 {
+    color: #df4439;
+  } */
+
+  /* .Africa__section-wrap > div:nth-child(2) > div > div > h1 {
+    color: #a5ff69;
+  } */
+
+  .Entertainment-section {
+    background-color: rgb(156, 41, 26);
+  }
+
+  .Entertainment__section-wrap {
+    justify-content: center;
+    align-items: center;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 10rem);
+    transition: all 500ms ease-in-out;
+  }
+
+  .Entertainment__section-wrap:hover {
+    grid-template-columns: repeat(3, 19.5rem);
+  }
+
   .post__form {
     flex-direction: row;
     align-items: first baseline;
@@ -365,6 +476,15 @@ footer > div {
   .post-body__container {
     padding-left: 6rem;
     padding-right: 6rem;
+  }
+
+  .law__background-image {
+    background: url("../src/assets/clarisse-meyer-jKU2NneZAbI-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    width: 100vw;
+    height: 50vh;
   }
 }
   
